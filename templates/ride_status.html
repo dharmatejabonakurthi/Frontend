@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ride Status - RapidoClone</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta http-equiv="refresh" content="5">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                🏍️ <span>RapidoClone</span>
+            </div>
+            <div class="nav-links">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="ride-status-card">
+            <h2>Your Ride Status</h2>
+            
+            <div class="status-timeline">
+                <div class="status-step {% if ride.status != 'pending' %}completed{% endif %}">
+                    <div class="step-icon">📱</div>
+                    <div>Booked</div>
+                </div>
+                <div class="status-line {% if ride.status != 'pending' %}active{% endif %}"></div>
+                <div class="status-step {% if ride.status == 'confirmed' %}completed{% endif %}">
+                    <div class="step-icon">👨‍✈️</div>
+                    <div>Captain Assigned</div>
+                </div>
+                <div class="status-line"></div>
+                <div class="status-step">
+                    <div class="step-icon">🏁</div>
+                    <div>Reached</div>
+                </div>
+            </div>
+            
+            <div class="ride-details-card">
+                <h3>Ride Details</h3>
+                <div class="detail-row">
+                    <span>Ride ID:</span>
+                    <strong>{{ ride.ride_id }}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Pickup:</span>
+                    <strong>{{ ride.pickup }}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Destination:</span>
+                    <strong>{{ ride.destination }}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Distance:</span>
+                    <strong>{{ ride.distance }} km</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Fare:</span>
+                    <strong class="fare">₹{{ ride.fare }}</strong>
+                </div>
+            </div>
+            
+            {% if ride.status == 'confirmed' %}
+            <div class="captain-details">
+                <h3>Captain Details</h3>
+                <div class="captain-card">
+                    <div class="captain-avatar">👨‍✈️</div>
+                    <div class="captain-info">
+                        <div><strong>{{ ride.captain }}</strong></div>
+                        <div>⭐ {{ ride.captain_rating }} ★</div>
+                        <div>🚗 {{ ride.captain_vehicle }}</div>
+                        <div>📞 {{ ride.captain_phone }}</div>
+                    </div>
+                </div>
+                
+                <div class="tracking-info">
+                    <h4>Live Tracking</h4>
+                    <div class="eta">ETA: 5 minutes</div>
+                    <div class="map-placeholder">
+                        🗺️ Captain is on the way to your location
+                        <div class="loading-bar"></div>
+                    </div>
+                </div>
+                
+                <div class="otp-info">
+                    <h4>Ride OTP</h4>
+                    <div class="otp-code">{{ ride.otp }}</div>
+                    <p>Share this OTP with captain to start ride</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="/cancel_ride/{{ ride.ride_id }}" class="btn-danger" 
+                   onclick="return confirm('Are you sure you want to cancel this ride?')">
+                    Cancel Ride
+                </a>
+                <button class="btn-primary" onclick="alert('Calling captain...')">
+                    📞 Call Captain
+                </button>
+            </div>
+            {% endif %}
+            
+            {% if ride.status == 'pending' %}
+            <div class="searching">
+                <div class="loader"></div>
+                <h3>Finding a captain for you...</h3>
+                <p>Please wait, we're matching you with the nearest captain</p>
+                <a href="/cancel_ride/{{ ride.ride_id }}" class="btn-danger">Cancel Request</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

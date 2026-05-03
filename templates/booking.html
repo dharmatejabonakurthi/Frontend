@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ride - RapidoClone</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/script.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                🏍️ <span>RapidoClone</span>
+            </div>
+            <div class="nav-links">
+                <span>Welcome, {{ session['user_name'] }}</span>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/book">Book Ride</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container booking-container">
+        <div class="booking-card">
+            <h2>Book a Ride</h2>
+            <p class="subtitle">Get a captain at your location in minutes</p>
+            
+            <form method="POST" class="booking-form">
+                <div class="form-group">
+                    <label for="pickup">Pickup Location</label>
+                    <input type="text" id="pickup" name="pickup" required 
+                           placeholder="Enter pickup location"
+                           value="Current Location">
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" name="destination" required 
+                           placeholder="Enter destination">
+                </div>
+                
+                <div class="form-group">
+                    <label for="distance">Approximate Distance (km)</label>
+                    <input type="number" id="distance" name="distance" required 
+                           step="0.1" min="0.5" value="5.0"
+                           onchange="updateFareEstimate()">
+                </div>
+                
+                <div class="fare-estimate" id="fareEstimate">
+                    Estimated Fare: ₹95
+                </div>
+                
+                <div class="ride-options">
+                    <label>Select Ride Type:</label>
+                    <div class="ride-type">
+                        <label class="ride-option">
+                            <input type="radio" name="ride_type" value="bike" checked>
+                            🏍️ Bike (₹12/km)
+                        </label>
+                        <label class="ride-option">
+                            <input type="radio" name="ride_type" value="auto">
+                            🛺 Auto (₹15/km)
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="payment-methods">
+                    <label>Payment Method:</label>
+                    <select name="payment">
+                        <option value="cash">Cash</option>
+                        <option value="card">Card</option>
+                        <option value="upi">UPI</option>
+                        <option value="wallet">Rapido Wallet</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-block">Confirm Booking →</button>
+            </form>
+        </div>
+        
+        <div class="safety-tips">
+            <h3>Safety Tips</h3>
+            <ul>
+                <li>✅ Verify captain's photo and vehicle number</li>
+                <li>✅ Share ride details with family</li>
+                <li>✅ Wear helmet during the ride</li>
+                <li>✅ Use emergency button if needed</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function updateFareEstimate() {
+            const distance = document.getElementById('distance').value;
+            const baseFare = 25;
+            const perKm = 12;
+            const bookingFee = 10;
+            const total = baseFare + (distance * perKm) + bookingFee;
+            document.getElementById('fareEstimate').innerHTML = `Estimated Fare: ₹${Math.round(total)}`;
+        }
+    </script>
+</body>
+</html>

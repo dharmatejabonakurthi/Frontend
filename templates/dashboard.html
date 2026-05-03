@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - RapidoClone</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                🏍️ <span>RapidoClone</span>
+            </div>
+            <div class="nav-links">
+                <span>Welcome, {{ session['user_name'] }}</span>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/book">Book Ride</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>My Dashboard</h1>
+            <a href="/book" class="btn-primary">Book New Ride →</a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">{{ rides|length }}</div>
+                <div class="stat-label">Total Rides</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4.8</div>
+                <div class="stat-label">Rating</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">On-Time</div>
+            </div>
+        </div>
+
+        <div class="recent-rides">
+            <h2>Recent Rides</h2>
+            {% if rides %}
+                {% for ride in rides %}
+                <div class="ride-card">
+                    <div class="ride-header">
+                        <span class="ride-id">Ride #{{ ride.ride_id }}</span>
+                        <span class="ride-status {{ ride.status }}">{{ ride.status|upper }}</span>
+                    </div>
+                    <div class="ride-details">
+                        <div class="ride-location">
+                            <div>📍 From: {{ ride.pickup }}</div>
+                            <div>🏁 To: {{ ride.destination }}</div>
+                        </div>
+                        <div class="ride-info">
+                            <div>💰 Fare: ₹{{ ride.fare }}</div>
+                            <div>🚗 Captain: {{ ride.captain }}</div>
+                        </div>
+                    </div>
+                    {% if ride.status == 'confirmed' %}
+                    <a href="/ride_status/{{ ride.ride_id }}" class="btn-secondary">Track Ride →</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <p>No rides yet. Book your first ride!</p>
+                    <a href="/book" class="btn-primary">Book Now</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
