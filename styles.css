@@ -1,0 +1,42 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background: #f5f7fa;
+}
+
+header {
+    background: #002147;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 10px;
+}
+
+.hero {
+    background: linear-gradient(to right, #004080, #0066cc);
+    color: white;
+    padding: 60px;
+    text-align: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: #eee;
+}
+
+.content {
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 0 0 5px gray;
+}
