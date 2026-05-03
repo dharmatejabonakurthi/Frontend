@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brave Browser Clone - Private & Secure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                🦁 <span>Brave Clone</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Privacy</a>
+                <a href="#">Rewards</a>
+                <a href="#">Wallet</a>
+                <button class="brave-btn">Download Brave</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="brave-header">
+            <div class="brave-icon">🦁</div>
+            <h1 class="title">Private & Secure Browser</h1>
+            <p class="subtitle">Search privately. Block ads and trackers by default.</p>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search privately using Brave Search" autocomplete="off">
+                <button class="mic-icon">🎤</button>
+            </div>
+            <div class="search-buttons">
+                <button class="primary-btn" onclick="performSearch()">Brave Search</button>
+                <button class="secondary-btn">I'm Feeling Lucky</button>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-number">7.8B</div>
+                <div class="stat-label">Trackers Blocked</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">2.3M</div>
+                <div class="stat-label">Ads Blocked</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1.2M</div>
+                <div class="stat-label">HTTPS Upgrades</div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div id="results" class="results-container"></div>
+
+        <!-- Features -->
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>Built-in Ad Blocker</h3>
+                <p>Blocks ads and trackers by default for faster browsing</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Brave Rewards</h3>
+                <p>Earn crypto for viewing privacy-respecting ads</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔒</div>
+                <h3>HTTPS Everywhere</h3>
+                <p>Automatically upgrades connections to secure HTTPS</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>🦁 Brave Clone - Privacy made simple</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
