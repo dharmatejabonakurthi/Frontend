@@ -14,7 +14,7 @@
             <div class="header-content">
                 <div class="logo">
                     <h1>🛒 D-Mart</h1>
-                    <span>India's Favorite Supermarket</span>
+                    <span>India's Favorite no. 1 Supermarket</span>
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Search for products...">
