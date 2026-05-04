@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D-Mart - India's Favorite Supermarket</title>
+    <title>D-Mart - India's Favorite no.1 Supermarket</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
